@@ -1,77 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Code Assessment</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
-  </head>
-  <body>
+</head>
+
+<body>
 
     <body>
 
-      <div class="container">
+        <div class="container">
 
-          <!-- Top fixed header (highscores and timer) -->
-          <header class="row">
-              <div class="col-md-6" id="Highscores">
-                  <h6 id="highscores-page">View Highscores</h6>
-              </div>
-              <div class="col-md-6" id="timer">
-                  Time: <span id="time">0</span>
-              </div>
-  
-          </header>
-  
-          <!-- Coding Challenge Title -->
-          <section id="title-section" class="show">
-              <div class="row">
-                  <div class="col-md-12">
-                      <h1>Coding Quiz</h1>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-12">
-                      <p>Ready for a challenge!?  The following coding assessment will be timed and consist of 5 multiple choice questions.  You will receive 1 point for each correct answer and lose 1 second of time for each wrong answer.  Good luck!</p>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-12">
-                      <button id="startButton">Start Quiz</button>
-                  </div>
-              </div>
-          </section>
-  
-          <!-- Coding questions -->
-          <section id="question-section" class="hide">
-              <div class="row">
-                  <div class="col-md-12 questions">
-                      <h3 id="question"></h3>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-12" id="option-list"></div>
-                  <div id="question-result" class="feedback hide"></div>
-              </div>
-          </section>
-  
-          <!-- High Score section -->
-          <section id="highscores" class="hide">
-              <div class="row">
-                  <div id="high-score" class="col-md-12">
-                      <h2>All done!</h2>
-                      <h3 id="final-score"></h3>
-                      <label for="initials-area">Enter initials:</label>
-                      <input type="text" name="initials-area" maxlength="4" id="initials">
-                      <button id="submit-button" type="submit">Submit</button>
-                  </div>
-              </div>
-          </section>
+            <!-- Top fixed header (highscores and timer) -->
+            <header class="row">
+                <div class="col-md-6" id="Highscores">
+                    <h6 id="highscores-page">View Highscores</h6>
+                </div>
+                <div class="col-md-6" id="timer">
+                    Time: <span id="time">0</span>
+                </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="./script.js"></script>
-  </body>
+            </header>
+
+            <!-- Coding Challenge Title -->
+            <section id="title-section" class="show">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Coding Quiz</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Ready for a challenge!? The following coding assessment will be timed and consist of 5
+                            multiple choice questions. You will receive 1 point for each correct answer and lose 1
+                            second of time for each wrong answer. Good luck!</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button id="startButton">Start Quiz</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Coding questions -->
+            <section id="question-section" class="hide">
+                <div class="row">
+                    <div class="col-md-12 questions">
+                        <h3 id="question"></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" id="option-list"></div>
+                    <div id="question-result" class="feedback hide"></div>
+                </div>
+            </section>
+
+            <!-- High Score section -->
+            <section id="highscores" class="hide">
+                <div class="row">
+                    <div id="high-score" class="col-md-12">
+                        <h2>All done!</h2>
+                        <h3 id="final-score"></h3>
+                        <label for="initials-area">Enter initials:</label>
+                        <input type="text" name="initials-area" maxlength="4" id="initials">
+                        <button id="submit-button" type="submit">Submit</button>
+                    </div>
+                </div>
+            </section>
+
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+                integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+                crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+                integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+                crossorigin="anonymous"></script>
+            <script src="./script.js"></script>
+    </body>
+
 </html>

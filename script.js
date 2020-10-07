@@ -57,6 +57,7 @@ function endGame() {
     highScoresEl.setAttribute("class", "show");
     questionSection.setAttribute("class", "hide");
     finalScore.textContent = `Game Over!  You scored ${correctCount}`;
+    //setTimeout(showHighScore, 2);
 
 };
 
@@ -84,13 +85,13 @@ function showHighScore() {
 
     let contentUl = document.createElement("ul");
 
-      for (let i = 0; i < highScores.length; i++){
+    for (let i = 0; i < highScores.length; i++) {
         let contentLi = document.createElement("li");
         contentLi.textContent = `Initials: ${highScores[i].name} Score: ${highScores[i].score}`;
         contentUl.appendChild(contentLi);
     };
 
-   document.body.appendChild(contentUl);
+    document.body.appendChild(contentUl);
 
 };
 
@@ -98,7 +99,8 @@ function showHighScore() {
 function updateTime() {
     time--;
     timerEl.textContent = time;
-    if (time <= 0) {
+    if (time < 0) {
+        timerEl.textContent = 0;
         endGame();
     }
 };
@@ -106,7 +108,7 @@ function updateTime() {
 
 function renderQuestion() {
 
-    if (time == 0) {    
+    if (time <= 0) {
         updateTime();
         return;
     };
@@ -122,7 +124,7 @@ function renderQuestion() {
     for (let i = 0; i < choices.length; i++) {
         let questionListItem = document.createElement("button")
         questionListItem.setAttribute("type", "button");
-        questionListItem.setAttribute("class","btn-block");
+        questionListItem.setAttribute("class", "btn-block");
         questionListItem.textContent = choices[i];
         optionListEl.append(questionListItem);
     };
@@ -144,23 +146,18 @@ function checkAnswer(event) {
             questionResultEl.setAttribute("class", "show");
             questionResultEl.textContent = "Correct!"
             correctCount++;
-            
         } else {
             questionResultEl.setAttribute("class", "show");
             questionResultEl.textContent = "Wrong!";
-            time--;
+            time = time - 2;
         };
-
-        if (time < 0) {
-            time = 0;
     }
+    setTimeout(nextQuestion, 2000);
+
 }
-setTimeout(nextQuestion, 2000);
 
 
-};
-
-function startButton () {
+function startButton() {
     questionSection.setAttribute("class", "show");
     titleSection.setAttribute("class", "hide");
 
