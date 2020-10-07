@@ -1,3 +1,10 @@
+/* Questions for Tutor
+- How to let a user only click once?
+    answering questions
+    submitting high scores
+- How to have the page only render the high scores without creating multiple arrays
+*/
+
 let questions = [
     {
         question: "Inside which HTML element do we put the JavaScript?",
@@ -31,19 +38,26 @@ var optionListEl = document.getElementById("option-list");
 var questionResultEl = document.getElementById("question-result");
 var timerEl = document.getElementById("timer");
 let highScoresEl = document.getElementById("highscores");
-
+let startQuiz = document.getElementById("startButton");
+let questionSection = document.getElementById("question-section");
+let titleSection = document.getElementById("title-section");
+let initials = document.getElementById("initials");
+let finalScore = document.getElementById("final-score");
+let submitButton = document.getElementById("submit-button");
+let buttonSelection = document.createElement("button");
 
 
 var questionIndex = 0;
 var correctCount = 0;
-let time = 60;
+let time = 15;
 let intervalId;
 
 function endGame() {
     clearInterval(intervalId);
-    let body = document.body;
-    body.innerHTML = `Game Over!  You scored ${correctCount}`;
-    setTimeout(showHighScore, 2);
+    highScoresEl.setAttribute("class", "show");
+    questionSection.setAttribute("class", "hide");
+    finalScore.textContent = `Game Over!  You scored ${correctCount}`;
+
 };
 
 function showHighScore() {
@@ -55,7 +69,7 @@ function showHighScore() {
         highScores = JSON.parse(highScores);
     };
 
-    let name = document.getElementById("name");
+    let name = initials.value.trim();
     let users = {
         name: name,
         score: correctCount
@@ -72,13 +86,14 @@ function showHighScore() {
 
       for (let i = 0; i < highScores.length; i++){
         let contentLi = document.createElement("li");
-        contentLi.textContent = `Name: ${highScores[i].name} Score: ${highScores[i].score}`;
+        contentLi.textContent = `Initials: ${highScores[i].name} Score: ${highScores[i].score}`;
         contentUl.appendChild(contentLi);
     };
 
    document.body.appendChild(contentUl);
 
 };
+
 
 function updateTime() {
     time--;
@@ -91,7 +106,7 @@ function updateTime() {
 
 function renderQuestion() {
 
-    if (time == 0) {
+    if (time == 0) {    
         updateTime();
         return;
     };
@@ -105,7 +120,9 @@ function renderQuestion() {
     questionResultEl.innerHTML = "";
 
     for (let i = 0; i < choices.length; i++) {
-        let questionListItem = document.createElement("li");
+        let questionListItem = document.createElement("button")
+        questionListItem.setAttribute("type", "button");
+        questionListItem.setAttribute("class","btn-block");
         questionListItem.textContent = choices[i];
         optionListEl.append(questionListItem);
     };
@@ -121,21 +138,37 @@ function nextQuestion() {
 
 function checkAnswer(event) {
     clearInterval(intervalId);
-    if (event.target.matches("li")) {
+    if (event.target.matches("button")) {
         let userAnswer = event.target.textContent;
         if (userAnswer === questions[questionIndex].answer) {
+            questionResultEl.setAttribute("class", "show");
             questionResultEl.textContent = "Correct!"
             correctCount++;
             
         } else {
+            questionResultEl.setAttribute("class", "show");
             questionResultEl.textContent = "Wrong!";
             time--;
         };
+
+        if (time < 0) {
+            time = 0;
     }
-    setTimeout(nextQuestion, 2000);
+}
+setTimeout(nextQuestion, 2000);
+
 
 };
 
+function startButton () {
+    questionSection.setAttribute("class", "show");
+    titleSection.setAttribute("class", "hide");
 
-renderQuestion();
+    renderQuestion();
+
+}
+
+
 optionListEl.addEventListener("click", checkAnswer);
+startQuiz.addEventListener("click", startButton);
+submitButton.addEventListener("click", showHighScore);
