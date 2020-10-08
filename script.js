@@ -45,6 +45,9 @@ let initials = document.getElementById("initials");
 let finalScore = document.getElementById("final-score");
 let submitButton = document.getElementById("submit-button");
 let buttonSelection = document.createElement("button");
+let highScoresPageView = document.getElementById("highscores-page");
+let viewHighScores = document.getElementById("highscores-view");
+let playAgainButton = document.getElementById("play-again");
 
 
 var questionIndex = 0;
@@ -92,6 +95,50 @@ function showHighScore() {
     };
 
     document.body.appendChild(contentUl);
+    console.log("ran the showHighScores functiton");
+};
+
+
+function highScoresPage() {
+
+    document.querySelectorAll('ul').forEach(function(a) {
+        a.remove()
+      })
+
+    viewHighScores.setAttribute("class", "show");
+    questionSection.setAttribute("class", "hide");
+    titleSection.setAttribute("class", "hide");
+    highScoresEl.setAttribute("class", "hide");
+
+  
+
+    let highScores = localStorage.getItem("scores");
+
+    if (!highScores) {
+        highScores = [];
+    } else {
+        highScores = JSON.parse(highScores);
+    };
+
+    
+    highScores.sort((a, b) => {
+        return b.score - a.score;
+    });
+
+
+    let contentUl = document.createElement("ul");
+
+    for (let i = 0; i < highScores.length; i++) {
+        let contentLi = document.createElement("li");
+        contentLi.textContent = `Initials: ${highScores[i].name} Score: ${highScores[i].score}`;
+        contentUl.appendChild(contentLi);
+    
+    };
+
+    
+    document.body.appendChild(contentUl);
+
+
 
 };
 
@@ -146,7 +193,7 @@ function checkAnswer(event) {
             questionResultEl.setAttribute("class", "show");
             questionResultEl.textContent = "Correct!"
             correctCount++;
-        } else {
+         } else {
             questionResultEl.setAttribute("class", "show");
             questionResultEl.textContent = "Wrong!";
             time = time - 2;
@@ -165,7 +212,21 @@ function startButton() {
 
 }
 
+/* function playAgain() {
+
+    document.querySelectorAll('ul').forEach(function(a) {
+        a.remove()
+      });
+    questionSection.setAttribute("class", "show");
+    titleSection.setAttribute("class", "hide");
+    highScoresEl.setAttribute("class", "hide");
+    viewHighScores.setAttribute("class", "hide");
+    renderQuestion();
+}
+*/
 
 optionListEl.addEventListener("click", checkAnswer);
 startQuiz.addEventListener("click", startButton);
-submitButton.addEventListener("click", showHighScore);
+submitButton.addEventListener("click", showHighScore, {once:true});
+highScoresPageView.addEventListener("click", highScoresPage, {once:true});
+//playAgainButton.addEventListener("click", playAgain);

@@ -11,6 +11,29 @@
 </head>
 
 <body>
+    <div class="container">
+
+    <header class="row">
+        <div class="col-md-12" id="Highscores">
+            <nav class="navbar navbar-light bg-light">
+                <span class="navbar-brand mb-0 h1" id="highscores-page"><a href="./highscores.html">View Highscores</a></span>
+                <div id=timer>Time: <span id="time">0</span>
+                </div>
+            </nav>
+        </div>
+
+</header>
+
+    <section id="highscores-view">
+        <div class="row">
+            <div id="high-score" class="col-md-12">
+                <h2>Highscores</h2>
+                <h3 id="final-score"></h3>
+                <button id="play-again" type="submit">Play Again!</button>
+            </div>
+        </div>
+    </section>
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -22,7 +45,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-    <script src="./script.js"></script>
+    <script src="highscores.js"></script>
 </body>
 
 </html>
