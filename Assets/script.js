@@ -1,8 +1,7 @@
 /* Questions for Tutor
-- How to let a user only click once?
-    answering questions
-    submitting high scores
-- How to have the page only render the high scores without creating multiple arrays
+- How to let a user only click one question selection?
+Action items:
+Clear page when creating play again function.
 */
 
 let questions = [
@@ -116,6 +115,8 @@ function highScoresPage() {
 
     if (!highScores) {
         highScores = [];
+        let showHS = document.getElementById("show-hs");
+        showHS.textContent = "No highscores yet to show. Click 'Play Again to get started!"
     } else {
         highScores = JSON.parse(highScores);
     };
@@ -212,21 +213,12 @@ function startButton() {
 
 }
 
-/* function playAgain() {
-
-    document.querySelectorAll('ul').forEach(function(a) {
-        a.remove()
-      });
-    questionSection.setAttribute("class", "show");
-    titleSection.setAttribute("class", "hide");
-    highScoresEl.setAttribute("class", "hide");
-    viewHighScores.setAttribute("class", "hide");
-    renderQuestion();
-}
-*/
+function playAgain() {
+location.reload();
+};
 
 optionListEl.addEventListener("click", checkAnswer);
 startQuiz.addEventListener("click", startButton);
 submitButton.addEventListener("click", showHighScore, {once:true});
 highScoresPageView.addEventListener("click", highScoresPage, {once:true});
-//playAgainButton.addEventListener("click", playAgain);
+playAgainButton.addEventListener("click", playAgain);
