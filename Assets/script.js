@@ -1,9 +1,3 @@
-/* Questions for Tutor
-- How to let a user only click one question selection?
-Action items:
-Clear page when creating play again function.
-*/
-
 let questions = [
     {
         question: "Inside which HTML element do we put the JavaScript?",
